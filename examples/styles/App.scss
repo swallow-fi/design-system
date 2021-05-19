@@ -1,0 +1,62 @@
+// @import './variables';
+// @import './mixins';
+// @import './webfonts';
+@import './reset';
+@import './common';
+
+.main-navigation-bar {
+    border-bottom: 1px solid black;   
+    
+    .title {
+        margin-left: 10px;
+    }
+}
+
+.n-page {
+    >.n-text--h1 {
+        margin-bottom: 40px;
+    }
+
+    >.n-text--h2 {
+        margin-bottom: 15px;
+    }
+
+    >.n-text--p {
+        margin-bottom: 20px;
+    }
+
+    >.n-divider {
+        margin: 20px 0 60px 0;
+    }
+
+    >.n-table {
+        margin-bottom: 40px;
+        overflow-x: scroll;
+    }
+}
+
+// example block
+.n-page pre {
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    transition: .2s;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.language-html {
+    .example-block--component {
+        padding: 20px;
+        white-space: initial;
+        overflow-x: scroll;
+        background-color: white;
+    }
+
+    .example-block--text {
+        border-top: 1px solid #ebebeb;
+        padding: 20px;
+        line-height: 1.5;
+        overflow-x: scroll;
+        background-color: #fafafa;
+    }
+}

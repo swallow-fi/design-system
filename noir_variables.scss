@@ -1,0 +1,107 @@
+// // https://github.com/twbs/bootstrap/blob/v4.3.1/scss/_variables.scss
+// // https://www.dev-tips-and-tricks.com/use-bootstrap-4-media-query-mixins
+// // https://getbootstrap.com/docs/4.3/layout/overview/
+// // https://getbootstrap.com/docs/4.0/layout/grid/#all-breakpoints
+
+
+// // font
+// $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+// $font-size-lg:                $font-size-base * 1.25 !default;
+// $font-size-sm:                $font-size-base * .875 !default;
+
+// $font-weight-lighter:         lighter !default;
+// $font-weight-light:           300 !default;
+// $font-weight-normal:          400 !default;
+// $font-weight-bold:            700 !default;
+// $font-weight-bolder:          bolder !default;
+
+// $font-weight-base:            $font-weight-normal !default;
+// $line-height-base:            1.5 !default;
+
+// $h1-font-size:                $font-size-base * 2.5 !default;
+// $h2-font-size:                $font-size-base * 2 !default;
+// $h3-font-size:                $font-size-base * 1.75 !default;
+// $h4-font-size:                $font-size-base * 1.5 !default;
+// $h5-font-size:                $font-size-base * 1.25 !default;
+// $h6-font-size:                $font-size-base !default;
+
+// // url
+// $url-img: '~assets/images';
+
+// // layout ====================
+
+// $grid-columns:      12;
+// $grid-gutter-width: 20px;
+// $grid-spacing: 20px;
+
+// $grid-sizes: xs,sm,md,lg,xl; 
+// $mobile-grid-sizes: xs, sm, md;
+// $desktop-grid-sizes: lg, xl;
+// $grid-breakpoint-xs: 0;
+// $grid-breakpoint-sm: 580;
+// $grid-breakpoint-md: 760;
+// $grid-breakpoint-lg: 1024;
+// $grid-breakpoint-xl: 1400;
+
+// $grid-breakpoints: (
+//   // Extra small screen / phone
+//   xs: "#{$grid-breakpoint-xs}px",
+//   // Small screen / phone
+//   sm: "#{$grid-breakpoint-sm}px",
+//   // Medium screen / tablet
+//   md: "#{$grid-breakpoint-md}px",
+//   // Large screen / desktop
+//   lg: "#{$grid-breakpoint-lg}px",
+//   // Extra large screen / wide desktop
+//   xl: "#{$grid-breakpoint-xl}px",
+// );
+
+// // 양옆 패딩 20px 여유
+// $container-max-widths: (
+//   xs: 100%,
+//   sm: "#{$grid-breakpoint-sm}px" - 40px,
+//   md: "#{$grid-breakpoint-md}px" - 40px,
+//   lg: "#{$grid-breakpoint-lg}px" - 40px,
+//   xl: "#{$grid-breakpoint-xl}px" - 40px,
+// );
+
+// // colors 
+// // $color-white: #efefef !default;
+// $color-white: white !default;
+// $color-black: #1b1b1d !default;
+// $color-lightblack: #323232 !default;
+// $color-gray: #8e8e93 !default;
+// $color-red: #ff3b30 !default;
+// $color-yellow: #ffcc00 !default;
+// $color-green: #4cd964 !default;
+// $color-blue: #007aff !default;
+
+// $color-light-border: #f5f5f5 !default;
+// $color-dark-border: #0e0d0d !default;
+
+// // $color-sell: $color-blue !default;
+// // $color-buy: $color-red !default;
+
+// // $color-black: #000000 !default;
+// // $color-lightblack: #222222 !default;
+// // $color-darkgrey: #333333 !default;
+// // $color-grey: #666666 !default;
+// // $color-lightgrey: #999999 !default;
+
+// // $color-darkwhite: #e6e6e6 !default;
+// // $color-white: #ffffff !default;
+
+// // $bg-grey: #e2e3e7 !default;
+// // $border-light: #e8e8e8 !default;
+// // $border-dark: #d8d8d8 !default;
+
+// :export {
+//   gridSizes: $grid-sizes;
+//   mobileGridSizes: $mobile-grid-sizes;
+//   desktopGridSizes: $desktop-grid-sizes;
+//   xsGridBreakpoint: $grid-breakpoint-xs;
+//   smGridBreakpoint: $grid-breakpoint-sm;
+//   mdGridBreakpoint: $grid-breakpoint-md;
+//   lgGridBreakpoint: $grid-breakpoint-lg;
+//   xlGridBreakpoint: $grid-breakpoint-xl;
+// }

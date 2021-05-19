@@ -1,0 +1,18 @@
+@mixin text-ellipsis($line: 3, $line-height: 26px) {
+	height: $line * $line-height;
+	line-height: $line-height;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+	word-wrap: break-word;
+}
+
+@mixin col-size-class($size, $i) {
+  .n-col.col-#{$size}-#{$i} {
+    flex: 0 0 100% / $grid-columns * $i - ($grid-spacing * ($grid-columns - $i) / 12);
+    max-width: 100% / $grid-columns * $i - ($grid-spacing * ($grid-columns - $i) / 12);
+    background-color: red;
+  }
+}

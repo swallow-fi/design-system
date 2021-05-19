@@ -1,0 +1,62 @@
+.n-range-slider {
+    // position: fixed;
+    // top: 0px;
+    // left: 0px;
+    // right: 0px;
+    // bottom: 0px;
+    // // background-color: black;
+    // // opacity: 0.3;
+    // z-index: 98;
+    // transition: 0.5s; // ease로 변경해야함
+    width: 100%;
+    height: 50px;
+    padding: 16px;
+
+    .n-range-slider__tracks-container {
+        position: relative;
+        width: 100%;
+        
+        .track--background {
+            width: 100%;
+            background: red;
+            height: 2px;    
+        }
+        .track--fill {
+            position: absolute;
+            background: black;
+            height: 4px;    
+        }
+    }
+
+    .n-range-slider__ticks-container {
+        position: relative;
+        width: 100%;
+
+        .n-range-slider__tick {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+        }
+    }
+
+    .n-range-slider__thumbs-container {
+        position: relative;
+        width: 100%;
+
+        .thumb--start {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: blue;
+            z-index: 999;
+        }
+        .thumb--end {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: green;
+            z-index: 999;
+        }
+    }
+}

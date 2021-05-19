@@ -1,0 +1,16 @@
+.n-drawer{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    z-index: 99;
+    transition: 0.5s; // ease로 변경해야함
+    overflow-y: scroll;
+}
+
+.n-drawer--right {
+    border-left: 0.5px solid gray; // 위치에 따라 다르게 
+}
+
+.n-drawer--left {
+    border-right: 0.5px solid gray; // 위치에 따라 다르게 
+}

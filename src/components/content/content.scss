@@ -1,0 +1,13 @@
+.n-content {
+    // transition: 0.5s; // ease로 변경해야함
+}
+
+// theme
+
+.n-content {
+  background-color: $color-white;
+}
+
+.n-content.n-theme--dark {
+  background-color: $color-black;
+}

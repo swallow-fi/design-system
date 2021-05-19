@@ -1,0 +1,25 @@
+button, input, select, textarea {
+    background-color: transparent;
+    border-style: none;
+    color: inherit;
+}
+
+.fill-height {
+    height: 100%;
+}
+
+.n-page {
+    padding: 40px 20px;
+}
+
+.up-color {
+    color: $color-red !important;
+}
+
+.middle-color {
+    color: $color-gray !important;
+}
+
+.down-color {
+    color: $color-blue !important;
+}

@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "outDir": "dist", // 출력할 디덱토리 
+        "module": "es2015",
+        "moduleResolution": "node",
+        "strict": true,
+        "sourceMap": true, // 디버깅시 필요한 소스맵 생성
+        "noImplicitReturns": true, // 함수의 모든 경로가 값을 반환하지 않으면 에러 발생
+        "noImplicitAny": true, // any타입 금지
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true, // ES Decorator에 대한 실험적 기능 사용 여부 (vue-property-decorator)
+        "emitDecoratorMetadata": true,
+        // "strictPropertyInitialization": false, // 우선 다른대랑 ts 버전이 달라서 임시로 false로 처리한다. 요소마다 !를 붙여주면 되지만 ts 버전이 다름
+        "lib": [
+            "es6",
+            "dom"
+        ] // 컴파일에 포함될 라이브러리 파일 목록 (target 옵션 값에 따라 기본으로 포함되는 라이브러리가 있다. lib 옵션 설정시 그 라이브러리 파일만 포함된다.)
+    },
+    "include": [
+        "examples/**/*",
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

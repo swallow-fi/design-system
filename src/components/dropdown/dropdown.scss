@@ -1,0 +1,17 @@
+.n-dropdown {
+    position: relative;
+    display: inline-block;
+
+    .list {
+        position: absolute;
+        z-index: 3;
+    }
+
+    .list--left {
+        right: 0px;
+    }
+
+    .list--right {
+        left: 0px;
+    }
+}

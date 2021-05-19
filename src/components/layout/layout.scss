@@ -1,0 +1,57 @@
+@mixin col-width($grid-columns, $grid-spacing, $i) {
+    flex: 0 0 calc((100% - (#{$grid-columns}/#{$i} - 1) * #{$grid-spacing}) / #{$grid-columns} * #{$i});
+    max-width: calc((100% - (#{$grid-columns}/#{$i} - 1) * #{$grid-spacing}) / #{$grid-columns} * #{$i});
+}
+
+.n-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+    .n-row {
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        justify-content: space-between;
+        
+        .n-col {
+            flex-basis: 0;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            max-width: 100%;
+
+            
+            @for $i from 1 to $grid-columns + 1 {
+                &.col-#{$i} {
+                    @include col-width($grid-columns, $grid-spacing, $i)
+                }
+            }
+
+            @each $size in $grid-sizes {
+                @media (min-width: map-get($grid-breakpoints, $size)) {
+                    @for $i from 1 to $grid-columns + 1 {
+                        &.col-#{$size}-#{$i} {
+                            @include col-width($grid-columns, $grid-spacing, $i)
+                        }
+                    }
+                }     
+            }
+        }
+    }
+}
+
+@each $size in $grid-sizes {
+    @media (min-width: map-get($grid-breakpoints, $size)) {
+        .n-container {
+            max-width: map-get($container-max-widths, $size);
+        }
+
+        .#{$size}-hide {
+            display: none;
+        }    
+    } 
+}

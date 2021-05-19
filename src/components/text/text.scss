@@ -1,0 +1,67 @@
+.n-text--h1 {
+    font-weight: $font-weight-bold;
+    font-size: $h1-font-size;
+    letter-spacing: -3px;
+    display: block;
+}
+
+.n-text--h2 {
+    font-weight: $font-weight-bold;
+    font-size: $h2-font-size;
+    letter-spacing: -1px;
+    display: block;
+}
+
+.n-text--h3 {
+    font-weight: $font-weight-bold;
+    font-size: $h3-font-size;
+    letter-spacing: -0.3px;
+    display: block;
+}
+
+.n-text--h4 {
+    font-weight: $font-weight-bold;
+    font-size: $h4-font-size;
+    display: block;
+}
+
+.n-text--h5 {
+    font-weight: $font-weight-bold;
+    font-size: $h5-font-size;
+    display: block;
+}
+
+.n-text--r1 {
+    font-weight: $font-weight-normal;
+    font-size: 16px;
+    line-height: $line-height-base;
+}
+
+.n-text--r2 {
+    font-weight: $font-weight-normal;
+    font-size: 13px;
+    line-height: $line-height-base;
+}
+
+.n-text--r3 {
+    font-weight: $font-weight-normal;
+    font-size: 11px;
+    line-height: $line-height-base;
+}
+
+.n-text--p {
+    font-weight: $font-weight-normal;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    display: block;
+}
+
+// theme
+
+.n-text{
+  color: $color-black;
+}
+
+.n-text.n-theme--dark {
+  color: $color-white;
+}
