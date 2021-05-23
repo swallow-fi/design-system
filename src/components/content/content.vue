@@ -4,13 +4,13 @@
 </main>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
+import { Vue, Component, Prop } from "vue-property-decorator";
+import { mixins } from "vue-class-component";
 
-import Theme from '../../mixins/Theme';
+import Theme from "../../mixins/Theme";
 
 @Component({
-  name: 'n-content'
+  name: "n-content",
 })
 export default class NContent extends mixins(Theme) {
   @Prop({ default: false })
@@ -18,23 +18,24 @@ export default class NContent extends mixins(Theme) {
 
   private get classes() {
     return {
-      'n-theme--dark': this.isDarkTheme
+      "n-theme--dark": this.isDarkTheme,
     };
   }
-
 
   private get styles() {
     const styles: { [key: string]: string } = {};
 
     if (this.app === true) {
-      let paddingLeft = (this.$nApp.width > this.$nApp.minWidth) ? this.$nApp.left : 0
-      let paddingRight = (this.$nApp.width > this.$nApp.minWidth) ? this.$nApp.right : 0
-      styles['padding-left'] = paddingLeft + 'px';
-      styles['padding-right'] = paddingRight + 'px';
-      styles['padding-top'] = this.$nApp.top + 'px';
+      let paddingLeft =
+        this.$nApp.width > this.$nApp.minWidth ? this.$nApp.left : 0;
+      let paddingRight =
+        this.$nApp.width > this.$nApp.minWidth ? this.$nApp.right : 0;
+      styles["padding-left"] = paddingLeft + "px";
+      styles["padding-right"] = paddingRight + "px";
+      styles["padding-top"] = this.$nApp.top + "px";
     }
 
     return styles;
   }
-};
+}
 </script>

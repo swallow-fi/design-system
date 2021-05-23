@@ -8,7 +8,11 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { VNode } from "vue";
+
+enum Positioin {
+  "left" = "left",
+  "right" = "right",
+}
 
 @Component({
   name: "n-dropdown",
@@ -21,7 +25,7 @@ export default class NDropdown extends Vue {
   listWidth!: number;
 
   private show: boolean = this.value;
-  private listPosition: string = "right";
+  private listPosition: string = Positioin.right;
 
   public on() {
     this.show = !this.show;
@@ -36,11 +40,9 @@ export default class NDropdown extends Vue {
     let list = this.$refs.list as any;
 
     if (list!.contains(e.target) || dropdown!.contains(e.target)) {
-      // Clicked in box
-      // console.log("Clicked in box");
+      // console.log("in");
     } else {
-      // Clicked outside the box
-      // console.log("Clicked outside the box");
+      // console.log("outside");
       this.show = false;
     }
   }
@@ -59,9 +61,9 @@ export default class NDropdown extends Vue {
     let listRightSideX = dropdownRect.x + this.listWidth;
 
     if (listRightSideX > bodyWidth) {
-      this.listPosition = "left";
+      this.listPosition = Positioin.left;
     } else {
-      this.listPosition = "right";
+      this.listPosition = Positioin.right;
     }
   }
 

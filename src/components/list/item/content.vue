@@ -4,13 +4,10 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
-import { Route } from 'vue-router';
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({
-  name: 'n-list-item--content'
+  name: "n-list-item--content",
 })
-export default class NListItemContent extends Vue {
-};
+export default class NListItemContent extends Vue {}
 </script>

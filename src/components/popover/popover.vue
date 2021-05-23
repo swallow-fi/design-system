@@ -7,10 +7,7 @@
   </transition>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
-import { VNode } from "vue";
+import { Vue, Component } from "vue-property-decorator";
 
 @Component({
   name: "n-popover",
@@ -30,22 +27,18 @@ export default class NPopover extends Vue {
   private background: string = "white";
   public onClose: Function = () => {};
 
-  private updatePosition(position: { top?: number; left?: number }) {
+  public updatePosition(position: { top?: number; left?: number }) {
     const top = position.top;
     const left = position.left;
     if (top !== undefined) this.top = top;
     if (left !== undefined) this.left = left;
   }
 
-  private updateSize(size: { width?: number; height?: number }) {
+  public updateSize(size: { width?: number; height?: number }) {
     const width = size.width;
     const height = size.height;
     if (width !== undefined) this.width = width;
     if (height !== undefined) this.height = height;
-  }
-
-  private get classes() {
-    return {};
   }
 
   private get computedTop() {
@@ -70,16 +63,15 @@ export default class NPopover extends Vue {
       top: this.computedTop,
       left: this.computedLeft,
       width: this.computedWidth,
-      //   'font-size': (this.size === undefined) ? false : this.size + 'px',
-      //   color: this.color
+      background: this.background,
     };
   }
 
-  private open() {
+  public open() {
     this.show = true;
   }
 
-  private close() {
+  public close() {
     this.show = false;
   }
 }

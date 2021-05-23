@@ -29,8 +29,6 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
-import { VNode } from "vue";
 
 import Theme from "../../mixins/Theme";
 // http://xahlee.info/js/svg_path_ellipse_arc.html
@@ -51,9 +49,6 @@ export default class NProgressBar extends mixins(Theme) {
 
   @Prop({ default: "red" })
   color!: string;
-
-  // @Prop({ default: false })
-  // gradient!: boolean;
 
   @Prop({ default: 0 })
   value!: number;

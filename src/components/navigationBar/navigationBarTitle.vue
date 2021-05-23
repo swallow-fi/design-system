@@ -4,14 +4,10 @@
   </span>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
-import { Route } from 'vue-router';
+import { Vue, Component } from "vue-property-decorator";
 
 @Component({
-  name: 'n-navigation-bar-title'
+  name: "n-navigation-bar-title",
 })
-export default class NNavigationBarTitle extends Vue {
-
-};
+export default class NNavigationBarTitle extends Vue {}
 </script>

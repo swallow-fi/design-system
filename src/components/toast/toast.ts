@@ -40,7 +40,7 @@ const Toast = (options: {
     });
     instance.verticalOffset = verticalOffset;
     instance.visible = true;
-    instance.$el.style.zIndex = index; // PopupManager.nextZIndex();
+    instance.$el.style.zIndex = index;
     instances.push(instance);
 }
 

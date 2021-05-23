@@ -35,11 +35,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { mixins } from "vue-class-component";
-import Table from "../../mixins/Table";
-import TableSelecable from "../../mixins/TableSelectable";
-import TableSortable from "../../mixins/TableSortable";
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({
   name: "n-slot-table",
@@ -67,6 +63,8 @@ export default class NSlotTable extends Vue {
 
   @Prop({ default: [] })
   items!: any[];
+
+  private scrolling: boolean = true;
 
   protected get tableHeaders() {
     return this.headers;
@@ -106,20 +104,5 @@ export default class NSlotTable extends Vue {
 
     return c;
   }
-
-  scrolling: boolean = true;
-
-  // private detectScroll() {
-  //   this.s
-  // }
-
-  mounted() {
-    // let content = this.$refs.content as HTMLDivElement;
-    // content.addEventListener('scroll', () => {
-    //   this.scrolling =
-    // })
-  }
-
-  created() {}
 }
 </script>

@@ -4,13 +4,10 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
-import { Route } from 'vue-router';
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({
-  name: 'n-list-item--image'
+  name: "n-list-item--image",
 })
-export default class NListItemImage extends Vue {
-};
+export default class NListItemImage extends Vue {}
 </script>

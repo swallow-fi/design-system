@@ -13,10 +13,7 @@
   </transition>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
-import { VNode } from "vue";
+import { Vue, Component } from "vue-property-decorator";
 
 @Component({
   name: "n-toast",
@@ -77,10 +74,9 @@ export default class NToast extends Vue {
     if (this.duration <= 0) {
       // TODO: throw error emitter 만들어야함
       throw Error("0보다 큰 수");
-      return;
     }
 
-    this.timer = setTimeout(() => {
+    this.timer = window.setTimeout(() => {
       this.close();
     }, this.duration);
   }

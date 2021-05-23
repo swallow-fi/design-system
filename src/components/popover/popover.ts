@@ -23,7 +23,7 @@ const Popover = (popoverId: number, target: HTMLElement, slots: VNode[], options
     let verticalOffset = 20; // options.offset || 20;
     instance.verticalOffset = verticalOffset;
     instance.visible = true;
-    instance.$el.style.zIndex = index; // PopupManager.nextZIndex();
+    instance.$el.style.zIndex = index;
 
     // updatePosition
     instance.updatePosition({

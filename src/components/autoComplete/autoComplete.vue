@@ -9,9 +9,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
-import { VNode } from "vue";
+import { NPopover } from "../popover";
 
 @Component({
   name: "n-auto-complete",
@@ -29,8 +27,8 @@ export default class NAutoComplete extends Vue {
   @Prop({ default: false })
   readonly!: boolean;
 
-  @Prop({ default: "100%" })
-  width!: any; // number | string
+  @Prop({ type: [String, Number], default: "100%" })
+  width!: number | string;
 
   @Prop({ default: undefined })
   size!: number;
@@ -62,29 +60,12 @@ export default class NAutoComplete extends Vue {
   @Prop({ default: false })
   autoComplete!: boolean;
 
-  private popoverId: number = Date.now();
-  private popover: any = null;
-  private slots: VNode[] = [];
+  private popover: NPopover | null = null;
   private text: string = "";
 
   @Watch("text")
   watchText(newText: string) {
     this.$emit("change-text", newText);
-  }
-
-  private get classes() {
-    const classes = {
-      "n-text--h1": this.h1,
-      "n-text--h2": this.h2,
-      "n-text--h3": this.h3,
-      "n-text--h4": this.h4,
-      "n-text--r1": this.r1,
-      "n-text--r2": this.r2,
-      "n-text--r3": this.r3,
-      "n-text--p": this.p,
-    };
-
-    return classes;
   }
 
   private get styles() {
@@ -104,26 +85,21 @@ export default class NAutoComplete extends Vue {
     return width;
   }
 
-  //   private isMatched(item: any) {
-  //     return item.indexOf(this.text) > -1;
-  //   }
-
-  // https://mygumi.tistory.com/321
   private onFocus() {
     this.$emit("focus");
-    const popover = this.$refs.popover as any;
+    const popover = this.$refs.popover as NPopover;
     popover.open();
   }
 
   private onBlur() {
     this.$emit("blur");
-    const popover = this.$refs.popover as any;
+    const popover = this.$refs.popover as NPopover;
     popover.close();
   }
 
   private updatePopover() {
     // updatePosition
-    const popover = this.$refs.popover as any;
+    const popover = this.$refs.popover as NPopover;
     popover.updatePosition({
       top: this.$el.offsetTop + this.$el.offsetHeight,
       left: this.$el.offsetLeft,
@@ -132,7 +108,7 @@ export default class NAutoComplete extends Vue {
     // updateSize
     popover.updateSize({
       width: this.$el.offsetWidth,
-      heigth: this.$el.offsetHeight,
+      height: this.$el.offsetHeight,
     });
   }
 

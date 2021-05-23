@@ -6,12 +6,10 @@
   </li>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
-import { Route } from 'vue-router';
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({
-  name: 'n-list-item'
+  name: "n-list-item",
 })
 export default class NListItem extends Vue {
   @Prop({ default: false })
@@ -22,13 +20,13 @@ export default class NListItem extends Vue {
 
   private get classes() {
     return {
-      'n-list-item--main': this.main,
-      'n-list-item--sub': this.sub
+      "n-list-item--main": this.main,
+      "n-list-item--sub": this.sub,
     };
   }
 
   private onClickHandler(event: Event) {
-    this.$emit('click', event);
+    this.$emit("click", event);
   }
-};
+}
 </script>

@@ -32,11 +32,9 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
 import Table from "../../mixins/Table";
-import TableSelecable from "../../mixins/TableSelectable";
 import TableSortable from "../../mixins/TableSortable";
 
 @Component({
@@ -50,10 +48,11 @@ export default class NStockTable extends mixins(Table, TableSortable) {
   private selectStock(index: number) {
     let item = this.items[index];
     let onSelect = item.onSelect;
-
-    if (onSelect) {
-      onSelect();
+    if (onSelect === undefined) {
+      return;
     }
+
+    onSelect();
   }
 }
 </script>

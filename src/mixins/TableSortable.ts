@@ -58,17 +58,6 @@ export default class TableSortable extends mixins(Table) {
             sort: string; // up || down
         }
     ) {
-        // let valueIndex = 0;
-
-        // let headers = this.headers;
-
-        // for (var h = 0; h < headers.length; h++) {
-        //     if (headers[h].value === value) {
-        //         valueIndex = h;
-        //         break;
-        //     }
-        // }
-
         let items = JSON.parse(JSON.stringify(this.items));
 
         if (this.sortBy.value === "" || this.sortBy.sort === "") {
@@ -89,46 +78,5 @@ export default class TableSortable extends mixins(Table) {
             });
             return;
         }
-    }
-
-    // protected sortTableItems(
-    //     value: string,
-    //     sortBy: {
-    //         value: string;
-    //         sort: string; // up || down
-    //     }
-    // ) {
-    //     let valueIndex = 0;
-
-    //     let headers = this.headers;
-
-    //     for (var h = 0; h < headers.length; h++) {
-    //         if (headers[h].value === value) {
-    //             valueIndex = h;
-    //             break;
-    //         }
-    //     }
-
-    //     if (this.sortBy.value === "" || this.sortBy.sort === "") {
-    //         this.tableItems = this.getTableItems();
-    //         return;
-    //     }
-
-    //     if (this.sortBy.value == value && this.sortBy.sort == "down") {
-    //         this.tableItems = this.getTableItems().sort((a: any, b: any) => {
-    //             return a[valueIndex].text - b[valueIndex].text;
-    //         });
-    //         return;
-    //     }
-
-    //     if (this.sortBy.value == value && this.sortBy.sort == "up") {
-    //         this.tableItems = this.getTableItems().sort((a: any, b: any) => {
-    //             return b[valueIndex].text - a[valueIndex].text;
-    //         });
-    //     }
-    // }
-
-    created() {
-        // this.tableItems = this.getTableItems();
     }
 }

@@ -8,9 +8,6 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
-import { VNode } from "vue";
 
 @Component({
   name: "n-input",
@@ -105,24 +102,19 @@ export default class NInput extends Vue {
     return width;
   }
 
-  // https://mygumi.tistory.com/321
   private onFocus() {
     this.$emit("focus");
-    // console.log("focus");
   }
 
   private onBlur() {
     this.$emit("blur");
-    // console.log("blur");
   }
 
-  // https://solcode.tistory.com/31
   private onInput(event: any) {
     this.$emit("input", event.target.value);
   }
 
   private onKeyup(event: any) {
-    // console.log("onKeyup", event);
     if (event.key === "Enter") {
       this.$emit("enterKeyup");
     }

@@ -4,7 +4,6 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { VNode } from "vue";
 import echarts from "echarts";
 // https://echarts.apache.org/examples/en/
 
@@ -12,6 +11,7 @@ import echarts from "echarts";
 // https://echarts.apache.org/examples/en/editor.html?c=line-aqi
 // https://echarts.apache.org/examples/en/editor.html?c=area-simple
 
+// TODO: 정리 필요하다
 class Chart {
   protected chart: echarts.ECharts | null;
   protected targetElem: HTMLDivElement;

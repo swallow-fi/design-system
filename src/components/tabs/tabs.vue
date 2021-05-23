@@ -45,9 +45,6 @@ export default class NTabs extends mixins(Theme) {
 
   @Watch("selectIndex")
   watchSelectIndex(newIndex: number, oldIndex: number) {
-    // if (newIndex !== oldIndex) {
-    //   this.$emit("change", newIndex);
-    // }
     this.$emit("change", newIndex);
   }
 
@@ -98,7 +95,6 @@ export default class NTabs extends mixins(Theme) {
     } else {
       this.selectIndex = index;
     }
-    // this.$emit("change", index);
   }
 }
 </script>

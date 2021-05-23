@@ -85,6 +85,11 @@ export default class NSparkline extends Vue {
   @Prop({ default: 1 })
   lineWidth!: number;
 
+  private pd: string = "";
+  private d: string = "";
+  private gradientStops: string | null = null;
+  private ld: string = "";
+
   private get hasFillGradient() {
     return this.fillGradient.length > 0;
   }
@@ -92,9 +97,6 @@ export default class NSparkline extends Vue {
   private get hasLine() {
     return this.lineData.length > 0;
   }
-
-  // plot children components with this y axis constraint.
-  // yRange?: [min<number>, max<number>]
 
   private makePoints(yPixels: number[]): any[] {
     return yPixels.map((y, i) => [i, y]);
@@ -138,7 +140,6 @@ export default class NSparkline extends Vue {
     };
   }
 
-  // ASSUMPTION: viewBox origin is 0,0
   private makeD(
     points: Point[],
     viewBox: ViewBox,
@@ -172,12 +173,8 @@ export default class NSparkline extends Vue {
     });
 
     if (polygonal) {
-      // take last point
-      // from last point go to ===> L lp.x, 0
       d += ` L ${projected[projected.length - 1][0]},${viewBox.height}`;
-      // then, go to origin ==> 0,0
       d += ` L ${0},${viewBox.height} Z`;
-      // then, go to ===> fp.x, fp.y (Z)
     }
 
     return d;
@@ -198,12 +195,8 @@ export default class NSparkline extends Vue {
     return gradientStops.join("");
   }
 
-  pd: string = "";
-  d: string = "";
-  gradientStops: string | null = null;
-  ld: string = "";
-
   created() {
+    // TODO: 정리 필요하다
     const viewBox = { width: this.width, height: this.height };
 
     // ydata 정제

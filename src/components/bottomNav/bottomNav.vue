@@ -12,9 +12,6 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
-import { VNode } from "vue";
-
 import Theme from "../../mixins/Theme";
 
 @Component({
@@ -42,9 +39,19 @@ export default class NBottomNav extends mixins(Theme) {
     onClick?: Function;
   }[];
 
+  private currentIndex = 0;
+
   @Watch("$route.name")
   watchRouteName(value: string) {
     this.setCurrentIndex(value);
+  }
+
+  private get position() {
+    return this.fixed ? "fixed" : "absolute";
+  }
+
+  private get bottom() {
+    return "0px";
   }
 
   private setCurrentIndex(route: string) {
@@ -57,23 +64,11 @@ export default class NBottomNav extends mixins(Theme) {
     }
   }
 
-  private currentIndex = 0;
-
-  private get position() {
-    return this.fixed ? "fixed" : "absolute";
-  }
-
-  private get bottom() {
-    // return this.fixed ? this.height + "px" : 0 + "px";
-    return "0px";
-  }
-
   private onClick(index: number) {
     let item = this.items[index];
 
     if (item.onClick !== undefined) {
       item.onClick();
-      window.scrollTo(0, 0);
       return;
     }
 
@@ -81,7 +76,6 @@ export default class NBottomNav extends mixins(Theme) {
       this.$router.push({
         name: item.route,
       });
-      window.scrollTo(0, 0);
     }
   }
 

@@ -6,7 +6,6 @@
   letter-spacing: normal;
   line-height: 1;
   text-indent: 0;
-//   transition: $primary-transition
   vertical-align: middle;
 }
 
@@ -25,20 +24,13 @@
   .candle--left {
     animation: MoveUpDown 0.8s linear infinite;
     background: blue;
-    // width: 24px;
-    // height: 66px;
     border-radius: 100px;
-    /* margin: 5px; */
-    // margin: 20px 5px 0px;
   }
 
   .candle--right {
     animation: MoveDownUp 0.8s linear infinite;
     background: red;
-    // width: 24px;
-    // height: 66px;
     border-radius: 100px;
-    // margin: 0px 5px 20px;
   }
 }
 

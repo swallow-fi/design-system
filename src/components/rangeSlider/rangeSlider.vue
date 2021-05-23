@@ -16,8 +16,6 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
 
 @Component({
   name: "n-range-slider",
@@ -67,12 +65,6 @@ export default class NRangeSlider extends Vue {
     return ticks;
   }
 
-  private getTickStyles(index: number) {
-    return {
-      left: `calc(${(100 / (this.ticks.length - 1)) * index}%)`,
-    };
-  }
-
   private get startTickIndex() {
     let start = this.start;
 
@@ -107,6 +99,12 @@ export default class NRangeSlider extends Vue {
     }
 
     return this.ticks.length - 1;
+  }
+
+  private getTickStyles(index: number) {
+    return {
+      left: `calc(${(100 / (this.ticks.length - 1)) * index}%)`,
+    };
   }
 
   private getTrackFillStyles() {
@@ -154,8 +152,6 @@ export default class NRangeSlider extends Vue {
 
     let startThumbEl = this.$refs.startThumb as HTMLSpanElement;
     let endThumbEl = this.$refs.endThumb as HTMLSpanElement;
-
-    // https://mygumi.tistory.com/332
 
     this.mousedownStart = this.mousedownStart.bind(this);
     this.mousedownEnd = this.mousedownEnd.bind(this);
@@ -256,8 +252,6 @@ export default class NRangeSlider extends Vue {
       end: this.ticks[this.endTickIndex].value,
     });
   }
-
-  private calcLeft(x: number) {}
 
   mounted() {
     this.setupEvent();

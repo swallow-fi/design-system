@@ -58,17 +58,4 @@ export default class DateFormatter {
     public static formatChartDate(timestamp: number): string {
         return moment(timestamp * 1000).locale('ko').format('MM/DD HH:mm');
     }
-
-    public static termFromTo(start: Date, end: Date, format: string = 'YYYY-MM-DD HH:mm') {
-        const startDate = moment(start);
-        const endDate = moment(end);
-
-        return `${startDate.format('YYYY/MM/DD HH:mm')} ~ ${endDate.format('YYYY/MM/DD HH:mm')}`;
-    }
-
-    public static termTo(end: Date, format: string = 'YYYY-MM-DD HH:mm') {
-        const endDate = moment(end);
-
-        return `${endDate.format('YYYY.MM.DD HH:mm')} or 보상 소진 시까지`;
-    }
 }

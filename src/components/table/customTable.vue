@@ -58,19 +58,6 @@ export default class NTable extends mixins(
     normal: string;
   };
 
-  private getSortAssetSrc(
-    value: string,
-    sortBy: { value: string; sort: string }
-  ) {
-    if (value === sortBy.value && sortBy.sort === "up") {
-      return this.sortAssets.up;
-    } else if (value === sortBy.value && sortBy.sort === "down") {
-      return this.sortAssets.down;
-    }
-
-    return this.sortAssets.normal;
-  }
-
   @Prop({ default: [] })
   headers!: {
     text: string;
@@ -86,6 +73,19 @@ export default class NTable extends mixins(
 
   @Prop({ default: [] })
   items!: any[];
+
+  private getSortAssetSrc(
+    value: string,
+    sortBy: { value: string; sort: string }
+  ) {
+    if (value === sortBy.value && sortBy.sort === "up") {
+      return this.sortAssets.up;
+    } else if (value === sortBy.value && sortBy.sort === "down") {
+      return this.sortAssets.down;
+    }
+
+    return this.sortAssets.normal;
+  }
 
   protected get tableHeaders() {
     return this.headers;

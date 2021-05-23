@@ -2,13 +2,10 @@
   <div class="n-spacer"></div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
-import { Route } from 'vue-router';
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({
-  name: 'n-spacer'
+  name: "n-spacer",
 })
-export default class NSpacer extends Vue {
-};
+export default class NSpacer extends Vue {}
 </script>

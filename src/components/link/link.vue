@@ -6,19 +6,16 @@
 </a>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
-import { Route } from 'vue-router';
-import { VNode } from 'vue';
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({
-  name: 'n-link'
+  name: "n-link",
 })
 export default class NLink extends Vue {
-  @Prop({ default: '' })
+  @Prop({ default: "" })
   link!: string;
 
-  @Prop({ default: '' })
+  @Prop({ default: "" })
   target!: string;
-};
+}
 </script>

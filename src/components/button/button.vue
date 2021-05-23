@@ -23,8 +23,6 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
 
 @Component({
   name: "n-button",
@@ -75,15 +73,6 @@ export default class NButton extends Vue {
   }
 
   private get computedBackground() {
-    if (
-      this.type === "primary" ||
-      this.type === "success" ||
-      this.type === "warning" ||
-      this.type === "danger"
-    ) {
-      return "white";
-    }
-
     return this.color === undefined
       ? this.dark === false
         ? "black"

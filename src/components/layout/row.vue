@@ -5,20 +5,14 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { mixins } from 'vue-class-component';
-import { Route } from 'vue-router';
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({
-  name: 'n-row'
+  name: "n-row",
 })
 export default class NRow extends Vue {
-  private get classes() {
+  private get styles() {
     return {};
   }
-
-  private get styles() {
-    return {}
-  }
-};
+}
 </script>

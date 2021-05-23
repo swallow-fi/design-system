@@ -5,8 +5,6 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-import { mixins } from "vue-class-component";
-import { Route } from "vue-router";
 
 @Component({
   name: "n-loading-dialog",
@@ -31,7 +29,5 @@ export default class NLoadingDialog extends Vue {
   private close() {
     this.$emit("input", false);
   }
-
-  created() {}
 }
 </script>
