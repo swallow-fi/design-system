@@ -1,4 +1,3 @@
-// components
 import button from '../src/components/button/button.md';
 import divider from '../src/components/divider/divider.md';
 import navigationBar from '../src/components/navigationBar/navigationBar.md';

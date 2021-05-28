@@ -1,10 +1,7 @@
 'use strict';
 const path = require('path');
 const utils = require('./utils');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -13,8 +10,8 @@ module.exports = {
         app: ['./src/index.ts'],
     },
     output: {
-        filename: 'noir.js',
-        path: path.resolve('../frontend/src/noir'),
+        filename: 'nest.js',
+        path: path.resolve('../frontend/src/nest'),
         library: 'libpack',
         libraryTarget: 'umd'
     },
@@ -30,7 +27,6 @@ module.exports = {
             }
         },
         minimizer: [
-            // we specify a custom UglifyJsPlugin here to get source maps in production
             new UglifyJsPlugin({
                 uglifyOptions: {
                     compress: false,
@@ -41,24 +37,20 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [".ts", ".js", ".vue", ".scss"], // import 할때 자동으로 붙여줄 확장자. 예를들어 import 'vue'를 하면 vue.tsx, vue.ts, vue.js, vue.vue 순서대로 시도해서 import 해줌
+        extensions: [".ts", ".js", ".vue", ".scss"],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            'assets': utils.resolve('src/assets') // 이게 있어야 파일이 생성됨...
+            'assets': utils.resolve('src/assets')
         }
     },
     plugins: [
-        new MiniCssExtractPlugin({ // css를 Extract 하는 플러그인
+        new MiniCssExtractPlugin({
             filename: "static/css/[name].[hash].css",
             chunkFilename: "static/css/[id].[hash].css"
         }),
-        // new CopyWebpackPlugin([
-        //     { from: 'src/assets/**/*', to: './static' }
-        // ])
     ],
     module: {
         rules: [
-            // .vue 파일 로더 정의
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',

@@ -6,6 +6,7 @@ const utils = require('./utils');
 
 const port = 8085;
 
+// marked
 const marked = require("marked");
 const renderer = new marked.Renderer();
 
@@ -27,12 +28,13 @@ renderer.table = (header, body) => {
     </n-table>
     `;
 }
+//
 
 module.exports = {
     mode: 'development',
     devServer: {
         clientLogLevel: 'error',
-        historyApiFallback: true, // ?
+        historyApiFallback: true,
         hot: true,
         compress: true,
         host: '0.0.0.0',
@@ -54,10 +56,10 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: [".ts", ".js", ".vue", ".scss"], // import 할때 자동으로 붙여줄 확장자. 예를들어 import 'vue'를 하면 vue.tsx, vue.ts, vue.js, vue.vue 순서대로 시도해서 import 해줌
+        extensions: [".ts", ".js", ".vue", ".scss"],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            'assets': utils.resolve('src/assets') // assets에 접근할 때 필요한 alias
+            'assets': utils.resolve('src/assets')
         }
     },
     plugins: [
@@ -91,7 +93,6 @@ module.exports = {
                     }
                 ]
             },
-            // .vue 파일 로더 정의
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',

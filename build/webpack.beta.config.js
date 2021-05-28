@@ -1,7 +1,6 @@
 'use strict';
 const path = require('path');
 const utils = require('./utils');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -22,10 +21,10 @@ module.exports = {
     },
     mode: process.env.NODE_ENV,
     resolve: {
-        extensions: [".ts", ".js", ".vue", ".scss"], // import 할때 자동으로 붙여줄 확장자. 예를들어 import 'vue'를 하면 vue.tsx, vue.ts, vue.js, vue.vue 순서대로 시도해서 import 해줌
+        extensions: [".ts", ".js", ".vue", ".scss"],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            'assets': utils.resolve('src/assets') // assets에 접근할 때 필요한 alias
+            'assets': utils.resolve('src/assets')
         }
     },
     plugins: [
@@ -34,18 +33,10 @@ module.exports = {
             template: 'index.html',
             inject: true
         }),
-        new MiniCssExtractPlugin({ // css를 Extract 하는 플러그인
+        new MiniCssExtractPlugin({
             filename: "static/css/[name].[hash].css",
             chunkFilename: "static/css/[id].[hash].css"
         }),
-        // new MiniCssExtractPlugin({ // css를 Extract 하는 플러그인
-        //     filename: "static/css/[name].[hash].css",
-        //     chunkFilename: "static/css/[id].[hash].css"
-        // }),
-        // new CopyWebpackPlugin([
-        //     { from: 'images/*', to: '.' },
-        //     { from: 'sitemap.xml', to: 'static/' }
-        // ])
     ],
     module: {
         rules: [
@@ -65,7 +56,6 @@ module.exports = {
                     }
                 ]
             },
-            // .vue 파일 로더 정의
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
