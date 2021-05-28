@@ -1,8 +1,8 @@
 import { RouteConfig } from "vue-router";
 import HomePage from '../pages/home/home.vue';
-import ComponentsPage from '../pages/components/components.vue';
-
+import ComponentPage from '../pages/component/component.vue';
 import markdownLoader from '../markdownLoader';
+import { unescapeHTML } from "../util/utils";
 
 const routes: RouteConfig[] = [
     {
@@ -15,7 +15,7 @@ const routes: RouteConfig[] = [
     }, {
         name: 'components',
         path: '/components',
-        component: ComponentsPage,
+        component: ComponentPage,
         meta: {
             title: 'Components',
         },
@@ -771,6 +771,36 @@ const routes: RouteConfig[] = [
         ]
     }
 ];
+
+type ChildComponent = {
+    template: string;
+}
+let componentsRouteChildren: RouteConfig[] = [];
+
+for (const route of routes) {
+    if (route.name === 'components' && route.children !== undefined) {
+        componentsRouteChildren = route.children;
+    }
+}
+
+let childMap = new Map();
+for (let child of componentsRouteChildren) {
+    const container = document.createElement('div');
+    let component = child.component as ChildComponent;
+    container.innerHTML = component.template;
+    const languageHTMLEles: any = container.getElementsByClassName('language-html');
+    let html = "";
+    for (const languageHTMLEle of languageHTMLEles) {
+        languageHTMLEle.innerHTML = unescapeHTML('<div class="example-block--component">' + languageHTMLEle.innerHTML + '</div>') + '<div class="example-block--text">' + languageHTMLEle.innerHTML + '</div>';
+        html = container.innerHTML;
+    }
+    childMap.set(child.name, html)
+}
+
+for (let child of componentsRouteChildren) {
+    let component = child.component as ChildComponent;
+    component.template = childMap.get(child.name);
+}
 
 
 export default routes;
