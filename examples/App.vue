@@ -1,7 +1,7 @@
 <template lang="html">
 <div id="app">
   <main-drawer v-model="showDrawer"></main-drawer>
-  <main-navigation-bar :showDrawer="showDrawer" @toggleDrawer="toggleDrawer"></main-navigation-bar>
+  <main-navigation-bar :showDrawer="showDrawer" @clickMenu="toggleDrawer"></main-navigation-bar>
   <n-content app>
     <router-view></router-view>
   </n-content>

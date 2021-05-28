@@ -1,6 +1,6 @@
 <template lang="html">
   <n-navigation-bar class="main-navigation-bar" fixed app>
-    <n-button @click="toggleDrawer()" icon flat>
+    <n-button @click="clickMenu()" icon flat>
       <n-icon :name="'menu'"></n-icon>
     </n-button>    
     <n-navigation-bar-title class="title">{{ title }}</n-navigation-bar-title>
@@ -19,8 +19,8 @@ export default class MainNavigationBar extends Vue {
     return constant.system.title;
   }
 
-  private toggleDrawer() {
-    this.$emit("toggleDrawer", !this.showDrawer);
+  private clickMenu() {
+    this.$emit("clickMenu", !this.showDrawer);
   }
 }
 </script>
