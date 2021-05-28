@@ -35,6 +35,7 @@ export default class MainDrawer extends Vue {
   value!: boolean;
 
   private routes: RouteConfig[] = routes;
+
   private get navRoutes() {
     const navRoutes = this.routes.map((route: RouteConfig) => {
       const navRoute: {
@@ -70,7 +71,6 @@ export default class MainDrawer extends Vue {
   }
 
   private goMainRoute(path: string) {
-    console.log("goMainRoute", path);
     if (path !== "/") {
       return;
     }

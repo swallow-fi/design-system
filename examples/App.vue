@@ -1,15 +1,7 @@
 <template lang="html">
 <div id="app">
-  <!-- drawer -->
   <main-drawer v-model="showDrawer"></main-drawer>
-  <!-- navigation-bar -->
-  <n-navigation-bar class="main-navigation-bar" fixed app>
-    <n-button @click="toggleDrawer()" icon flat>
-      <n-icon :name="'menu'"></n-icon>
-    </n-button>    
-    <n-navigation-bar-title class="title">NEST</n-navigation-bar-title>
-  </n-navigation-bar>
-  <!-- content -->
+  <main-navigation-bar :showDrawer="showDrawer" @toggleDrawer="toggleDrawer"></main-navigation-bar>
   <n-content app>
     <router-view></router-view>
   </n-content>
@@ -17,21 +9,20 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { RouteConfig } from "vue-router";
 import MainDrawer from "./components/mainDrawer.vue";
-
-import routes from "./router/routes";
+import MainNavigationBar from "./components/mainNavigationBar.vue";
 
 @Component({
   components: {
+    "main-navigation-bar": MainNavigationBar,
     "main-drawer": MainDrawer,
   },
 })
 export default class App extends Vue {
   private showDrawer: boolean = false;
 
-  private toggleDrawer() {
-    this.showDrawer = !this.showDrawer;
+  private toggleDrawer(showDrawer: boolean) {
+    this.showDrawer = showDrawer;
   }
 }
 </script>
