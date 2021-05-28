@@ -4,10 +4,7 @@
     "private": true,
     "scripts": {
         "start": "npm run demo",
-        "demo": "webpack-dev-server --progress --config build/webpack.demo.config.js",
-        "build": "webpack --config build/webpack.beta.config.js",
-        "beta": "webpack --config build/webpack.beta.config.js",
-        "lib": "webpack --config build/webpack.lib.config.js"
+        "demo": "webpack-dev-server --progress --config build/webpack.demo.config.js"
     },
     "dependencies": {
         "@egjs/flicking-plugins": "^3.3.0",

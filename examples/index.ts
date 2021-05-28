@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
-import Noir from '../src';
-Vue.use(Noir);
+import Nest from '../src';
+Vue.use(Nest);
 
 import './styles/App.scss';
 

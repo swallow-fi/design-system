@@ -11,8 +11,8 @@ import VueFlicking from "@egjs/vue-flicking";
 
 import './styles/App.scss';
 
-class Noir {
-    public static install(_vue: VueConstructor, args: any) {
+class Nest {
+    public static install(_vue: VueConstructor) {
         _vue.use(NApp);
         _vue.use(VueFlicking);
         _vue.prototype.$toast = Toast;
@@ -29,4 +29,4 @@ class Noir {
     }
 }
 
-export default Noir;
+export default Nest;
