@@ -1,7 +1,6 @@
 <template lang="html">
   <div class="n-col"
-  :class="classes"
-  :style="styles">
+  :class="computedClass">
   <slot></slot>
   </div>
 </template>
@@ -30,37 +29,15 @@ export default class NCol extends Vue {
   @Prop({ default: 0 })
   xl!: number;
 
-  private get classes() {
-    let classes: { [key: string]: boolean } = {};
-    if (this.col !== 0) {
-      classes[`col-${this.col}`] = true;
-    }
-
-    if (this.xs !== 0) {
-      classes[`col-xs-${this.xs}`] = true;
-    }
-
-    if (this.sm !== 0) {
-      classes[`col-sm-${this.sm}`] = true;
-    }
-
-    if (this.md !== 0) {
-      classes[`col-md-${this.md}`] = true;
-    }
-
-    if (this.lg !== 0) {
-      classes[`col-lg-${this.lg}`] = true;
-    }
-
-    if (this.xl !== 0) {
-      classes[`col-xl-${this.xl}`] = true;
-    }
-
-    return classes;
-  }
-
-  private get styles() {
-    return {};
+  private get computedClass() {
+    return {
+      [`col-${this.col}`]: this.col !== 0,
+      [`col-xs-${this.xs}`]: this.xs !== 0,
+      [`col-sm-${this.sm}`]: this.sm !== 0,
+      [`col-md-${this.md}`]: this.md !== 0,
+      [`col-lg-${this.lg}`]: this.lg !== 0,
+      [`col-xl-${this.xl}`]: this.xl !== 0,
+    };
   }
 }
 </script>

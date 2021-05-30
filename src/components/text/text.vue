@@ -1,6 +1,6 @@
 <template lang="html">
-  <span class="n-text" :class="classes"
-  :style="styles"><slot></slot></span>
+  <span class="n-text" :class="computedClass"
+  :style="computedStyle"><slot></slot></span>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
@@ -15,10 +15,10 @@ export default class NText extends mixins(Theme) {
   @Prop({ default: "" })
   color!: string;
 
-  @Prop({ default: undefined })
+  @Prop({ default: 0 })
   size!: number;
 
-  @Prop({ default: undefined })
+  @Prop({ default: "" })
   display!: string;
 
   @Prop({ default: false })
@@ -51,8 +51,8 @@ export default class NText extends mixins(Theme) {
   @Prop({ default: false })
   bold!: boolean;
 
-  private get classes() {
-    const classes = {
+  private get computedClass() {
+    return {
       "n-text--h1": this.h1,
       "n-text--h2": this.h2,
       "n-text--h3": this.h3,
@@ -64,12 +64,10 @@ export default class NText extends mixins(Theme) {
       "n-text--p": this.p,
       "n-theme--dark": this.isDarkTheme,
     };
-
-    return classes;
   }
 
   private get displayStyle() {
-    if (this.display) {
+    if (this.display !== "") {
       return this.display;
     }
 
@@ -80,11 +78,11 @@ export default class NText extends mixins(Theme) {
     return "inline";
   }
 
-  private get styles() {
+  private get computedStyle() {
     return {
-      "font-size": this.size === undefined ? false : this.size + "px",
-      color: this.color,
-      display: this.displayStyle,
+      color: this.color === "" ? false : this.color,
+      display: this.displayStyle === "" ? false : this.displayStyle,
+      "font-size": this.size === 0 ? false : this.size + "px",
       "font-weight": this.bold === false ? "normal" : "bold",
     };
   }

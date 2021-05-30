@@ -1,5 +1,5 @@
 <template lang="html">
-  <span class="n-chip" :style="styles" @click="onClickHandler">
+  <span class="n-chip" :style="computedStyle" @click="onClickHandler">
     <span class="n-chip__content">
       <n-icon v-show="iconName !== ''" :name="iconName"></n-icon>
       <slot></slot>
@@ -9,6 +9,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
+import { convertSizeValue } from "../../utils/utils";
 
 import Theme from "../../mixins/Theme";
 
@@ -28,11 +29,11 @@ export default class NChip extends mixins(Theme) {
   @Prop({ default: "" })
   iconName!: string;
 
-  private get styles() {
+  private get computedStyle() {
     return {
       "background-color": this.background,
+      "font-size": convertSizeValue(this.size),
       color: this.color,
-      "font-size": this.size + "px",
     };
   }
 

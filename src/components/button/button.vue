@@ -4,17 +4,8 @@
       @click="onClickHandler"
       :disabled="disabled || loading"
       :type="buttonType"
-      :class="[
-        type ? 'n-button--' + type : '',
-        icon ? 'n-button--icon' : '',
-        {
-          'is-disabled': disabled,
-          'is-loading': loading,
-          'is-block': block,
-          'is-flat': flat
-        }
-      ]"
-      :style="styles"
+      :class="computedClass"
+      :style="computedStyle"
     >
     <i class="n-icon-loading" v-if="loading"></i>
     <!-- <i :class="icon" v-if="icon && !loading"></i> -->
@@ -23,6 +14,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { convertSizeValue } from "../../utils/utils";
 
 @Component({
   name: "n-button",
@@ -72,39 +64,24 @@ export default class NButton extends Vue {
       : this.color;
   }
 
-  private get computedBackground() {
-    return this.color === undefined
-      ? this.dark === false
-        ? "black"
-        : "white"
-      : this.color;
+  private get computedClass() {
+    return {
+      ["n-button--" + this.type]: true,
+      "n-button--icon": this.icon,
+      "is-disabled": this.disabled,
+      "is-loading": this.loading,
+      "is-block": this.block,
+      "is-flat": this.flat,
+    };
   }
 
-  private get computedHeight() {
-    const height = this.height;
-    if (typeof height === "number") {
-      return height + "px";
-    }
-
-    return height;
-  }
-
-  private get computedWidth() {
-    const width = this.width;
-    if (typeof width === "number") {
-      return width + "px";
-    }
-
-    return width;
-  }
-
-  private get styles() {
+  private get computedStyle() {
     if (this.buttonType === "outline") {
       return {
         "background-color": "transparent",
         border: `1px solid ${this.background}`,
         color: this.computedColor,
-        height: this.computedHeight,
+        height: convertSizeValue(this.height),
       };
     }
 
@@ -112,8 +89,8 @@ export default class NButton extends Vue {
       "background-color":
         this.background === undefined ? false : this.background,
       color: this.computedColor,
-      height: this.computedHeight,
-      width: this.computedWidth,
+      height: convertSizeValue(this.height),
+      width: convertSizeValue(this.width),
     };
   }
 

@@ -9,14 +9,15 @@
   <div class="n-dialog__content"
   :style="contentStyles">
     <div class="n-dialog"
-    :style="styles">
+    :style="computedStyle">
       <slot></slot>
     </div>
   </div>
 </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
+import { convertSizeValue } from "../../utils/utils";
 
 @Component({
   name: "n-dialog",
@@ -47,12 +48,16 @@ export default class NDialog extends Vue {
     return this.value;
   }
 
-  private get styles() {
-    const styles: any = {
-      width: this.width + "px",
+  private get computedStyle() {
+    return {
+      width: convertSizeValue(this.width),
     };
+  }
 
-    return styles;
+  private get contentStyles() {
+    return {
+      display: this.value === true ? "flex" : "none",
+    };
   }
 
   private close() {
@@ -61,12 +66,6 @@ export default class NDialog extends Vue {
     }
 
     this.$emit("input", false);
-  }
-
-  private get contentStyles() {
-    return {
-      display: this.value === true ? "flex" : "none",
-    };
   }
 
   created() {}

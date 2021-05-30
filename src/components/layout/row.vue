@@ -1,6 +1,5 @@
 <template lang="html">
-  <div class="n-row"
-  :style="styles">
+  <div class="n-row">
   <slot></slot>
   </div>
 </template>
@@ -10,9 +9,5 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 @Component({
   name: "n-row",
 })
-export default class NRow extends Vue {
-  private get styles() {
-    return {};
-  }
-}
+export default class NRow extends Vue {}
 </script>

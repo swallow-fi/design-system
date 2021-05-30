@@ -1,7 +1,6 @@
 # BottomNav
 
-### Basic usage
-
+### 기본 사용
 
 ```html
 <n-bottom-nav

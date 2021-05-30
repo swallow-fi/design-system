@@ -5,7 +5,6 @@
       <div class="track--fill" :style="getTrackFillStyles()"></div>
     </div>
     <div class="n-range-slider__ticks-container">
-      <!-- <span ref="ticks" v-for="(tick, index) in ticks" class="n-range-slider__tick" :style="getTickStyles(index)">{{ tick.value }}</span> -->
       <span ref="ticks" v-for="(tick, index) in ticks" class="n-range-slider__tick" :style="getTickStyles(index)"></span>
     </div>
     <div class="n-range-slider__thumbs-container">
@@ -16,6 +15,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import { events } from "../../utils/consts";
 
 @Component({
   name: "n-range-slider",
@@ -139,7 +139,7 @@ export default class NRangeSlider extends Vue {
   private isStartHolding = false;
   private isEndHolding = false;
 
-  private setupEvent() {
+  private bindEvent() {
     let x = 0;
     let y = 0;
     let tickEls = this.$refs.ticks as HTMLDivElement[];
@@ -158,18 +158,18 @@ export default class NRangeSlider extends Vue {
     this.eventMove = this.eventMove.bind(this);
     this.eventEnd = this.eventEnd.bind(this);
 
-    startThumbEl.addEventListener("mousedown", this.mousedownStart);
-    endThumbEl.addEventListener("mousedown", this.mousedownEnd);
+    startThumbEl.addEventListener(events.mousedown, this.mousedownStart);
+    endThumbEl.addEventListener(events.mousedown, this.mousedownEnd);
 
-    startThumbEl.addEventListener("touchstart", this.mousedownStart);
-    endThumbEl.addEventListener("touchstart", this.mousedownEnd);
+    startThumbEl.addEventListener(events.touchstart, this.mousedownStart);
+    endThumbEl.addEventListener(events.touchstart, this.mousedownEnd);
 
-    document.addEventListener("mousemove", this.eventMove);
-    document.addEventListener("touchmove", this.eventMove);
+    document.addEventListener(events.mousemove, this.eventMove);
+    document.addEventListener(events.touchmove, this.eventMove);
 
-    document.addEventListener("mouseup", this.eventEnd);
-    document.addEventListener("touchend", this.eventEnd);
-    document.addEventListener("touchcancel", this.eventEnd);
+    document.addEventListener(events.mouseup, this.eventEnd);
+    document.addEventListener(events.touchend, this.eventEnd);
+    document.addEventListener(events.touchcancel, this.eventEnd);
   }
 
   private mousedownStart(event: any) {
@@ -253,26 +253,30 @@ export default class NRangeSlider extends Vue {
     });
   }
 
-  mounted() {
-    this.setupEvent();
-  }
-
-  beforeDestroy() {
+  private unBindEvent() {
     let startThumbEl = this.$refs.startThumb as HTMLSpanElement;
     let endThumbEl = this.$refs.endThumb as HTMLSpanElement;
 
-    startThumbEl.removeEventListener("mousedown", this.mousedownStart);
-    endThumbEl.removeEventListener("mousedown", this.mousedownEnd);
+    startThumbEl.removeEventListener(events.mousedown, this.mousedownStart);
+    endThumbEl.removeEventListener(events.mousedown, this.mousedownEnd);
 
-    startThumbEl.removeEventListener("touchstart", this.mousedownStart);
-    endThumbEl.removeEventListener("touchstart", this.mousedownEnd);
+    startThumbEl.removeEventListener(events.touchstart, this.mousedownStart);
+    endThumbEl.removeEventListener(events.touchstart, this.mousedownEnd);
 
-    document.removeEventListener("mousemove", this.eventMove);
-    document.removeEventListener("touchmove", this.eventMove);
+    document.removeEventListener(events.mousemove, this.eventMove);
+    document.removeEventListener(events.touchmove, this.eventMove);
 
-    document.removeEventListener("mouseup", this.eventEnd);
-    document.removeEventListener("touchend", this.eventEnd);
-    document.removeEventListener("touchcancel", this.eventEnd);
+    document.removeEventListener(events.mouseup, this.eventEnd);
+    document.removeEventListener(events.touchend, this.eventEnd);
+    document.removeEventListener(events.touchcancel, this.eventEnd);
+  }
+
+  mounted() {
+    this.bindEvent();
+  }
+
+  beforeDestroy() {
+    this.unBindEvent();
   }
 }
 </script>

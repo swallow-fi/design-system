@@ -1,6 +1,6 @@
 # BottomSheet
 
-### 기본
+### 기본 사용
 
 ```html
 <n-button @click="toggleDefault">show bottom sheet</n-button>

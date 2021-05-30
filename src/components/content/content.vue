@@ -1,5 +1,5 @@
 <template lang="html">
-<main class="n-content" :class="classes" :style="styles">
+<main class="n-content" :class="computedClass" :style="computedStyle">
     <slot></slot>
 </main>
 </template>
@@ -16,13 +16,13 @@ export default class NContent extends mixins(Theme) {
   @Prop({ default: false })
   app!: boolean;
 
-  private get classes() {
+  private get computedClass() {
     return {
       "n-theme--dark": this.isDarkTheme,
     };
   }
 
-  private get styles() {
+  private get computedStyle() {
     const styles: { [key: string]: string } = {};
 
     if (this.app === true) {

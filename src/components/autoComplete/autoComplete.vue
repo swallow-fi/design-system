@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="n-auto-complete"
-  :style="styles">
+  :style="computedStyle">
     <n-input v-model="text" @blur="onBlur" @focus="onFocus"></n-input>
     <n-popover ref="popover">
         <slot></slot>
@@ -68,7 +68,7 @@ export default class NAutoComplete extends Vue {
     this.$emit("change-text", newText);
   }
 
-  private get styles() {
+  private get computedStyle() {
     return {
       "font-size": this.size === undefined ? false : this.size + "px",
       color: this.color,

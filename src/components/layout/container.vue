@@ -1,6 +1,5 @@
 <template lang="html">
-  <div class="n-container"
-  :style="styles">
+  <div class="n-container">
   <slot></slot>
   </div>
 </template>
@@ -10,9 +9,5 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 @Component({
   name: "n-container",
 })
-export default class NContainer extends Vue {
-  private get styles() {
-    return {};
-  }
-}
+export default class NContainer extends Vue {}
 </script>

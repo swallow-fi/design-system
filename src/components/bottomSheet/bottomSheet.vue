@@ -7,7 +7,7 @@
   <div class="n-dialog__content n-bottom-sheet"
   :style="contentStyles">
     <div class="n-dialog"
-    :style="styles">
+    :style="computedStyle">
       <slot></slot>
     </div>
   </div>
@@ -15,6 +15,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { convertSizeValue } from "../../utils/utils";
 
 @Component({
   name: "n-bottom-sheet",
@@ -26,9 +27,6 @@ export default class NBottomSheet extends Vue {
   @Prop({ type: [String, Number], default: "auto" })
   width!: string | number;
 
-  @Prop({ default: "default" })
-  type!: string;
-
   @Prop({ default: false })
   disabled!: boolean;
 
@@ -36,12 +34,10 @@ export default class NBottomSheet extends Vue {
     return this.value;
   }
 
-  private get styles() {
-    const styles: any = {
-      width: this.width + "px",
+  private get computedStyle() {
+    return {
+      width: convertSizeValue(this.width),
     };
-
-    return styles;
   }
 
   private get contentStyles() {

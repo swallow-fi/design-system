@@ -1,7 +1,7 @@
 <template lang="html">
-    <div class="n-tabs" :class="classes">
-        <div class="tabs" :style="tabsStyles">
-            <span @click="selectTab(index)"class="tab" v-for="(item, index) in items" :key="index" :style="tabStyles(index)">
+    <div class="n-tabs" :class="computedClass">
+        <div class="tabs" :style="computedStyle">
+            <span @click="selectTab(index)"class="tab" v-for="(item, index) in items" :key="index" :style="getTabStyle(index)">
                 <span>{{ getTitle(index) }}</span>
             </span>
         </div>
@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
-
+import { convertSizeValue } from "../../utils/utils";
 import Theme from "../../mixins/Theme";
 
 @Component({
@@ -42,37 +42,33 @@ export default class NTabs extends mixins(Theme) {
   grow!: boolean;
 
   private selectIndex: number = -1;
+  private borderLineWidth = 3;
 
   @Watch("selectIndex")
   watchSelectIndex(newIndex: number, oldIndex: number) {
     this.$emit("change", newIndex);
   }
 
-  private getTitle(index: number) {
-    return this.items[index][this.value];
-  }
-
-  private get classes() {
-    const classes = {
+  private get computedClass() {
+    return {
       "show-under-line": this.showUnderline,
       "n-theme--dark": this.isDarkTheme,
       "n-tabs--grow": this.grow,
     };
-
-    return classes;
   }
 
-  private get tabsStyles() {
-    const styles: any = {
-      height:
-        typeof this.height === "string" ? this.height : this.height + "px",
+  private get computedStyle() {
+    return {
+      height: this.height + "px",
     };
-
-    return styles;
   }
 
-  private tabStyles(index: number) {
-    const styles: any = {
+  private getTitle(index: number) {
+    return this.items[index][this.value];
+  }
+
+  private getTabStyle(index: number) {
+    return {
       lineHeight:
         typeof this.height === "string" ? this.height : this.height + "px",
       height:
@@ -82,11 +78,9 @@ export default class NTabs extends mixins(Theme) {
         index === this.selectIndex ? this.selectColor : this.unselectColor,
       borderBottom:
         index === this.selectIndex && this.showUnderline === true
-          ? "3px solid"
+          ? `${this.borderLineWidth}px solid`
           : "",
     };
-
-    return styles;
   }
 
   public selectTab(index: number) {

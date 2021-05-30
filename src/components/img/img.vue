@@ -1,13 +1,12 @@
 <template lang="html">
-  <img class="n-img" aria-hidden="true" @click="onClickHandler"
+  <img class="n-img" aria-hidden="true"
   :src="path"
-  :class="classes"
-  :style="styles"></i>
+  :style="computedStyle"></i>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
-
+import { convertSizeValue } from "../../utils/utils";
 import Theme from "../../mixins/Theme";
 
 @Component({
@@ -20,24 +19,10 @@ export default class NImg extends mixins(Theme) {
   @Prop({ default: "" })
   path!: string;
 
-  private get classes() {
+  private get computedStyle() {
     return {
-      height: this.height,
-      "n-theme--dark": this.isDarkTheme,
+      height: convertSizeValue(this.height),
     };
-  }
-
-  private get styles() {
-    const styles: any = {
-      height:
-        typeof this.height === "string" ? this.height : this.height + "px",
-    };
-
-    return styles;
-  }
-
-  private onClickHandler(event: Event) {
-    this.$emit("click", event);
   }
 }
 </script>

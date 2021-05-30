@@ -195,8 +195,8 @@ export default class NSparkline extends Vue {
     return gradientStops.join("");
   }
 
-  created() {
-    // TODO: 정리 필요하다
+  // TODO: 정리 필요하다
+  private setData() {
     const viewBox = { width: this.width, height: this.height };
 
     // ydata 정제
@@ -267,6 +267,10 @@ export default class NSparkline extends Vue {
         ","
       )})} />`;
     }
+  }
+
+  created() {
+    this.setData();
   }
 }
 </script>

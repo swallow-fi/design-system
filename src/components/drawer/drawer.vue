@@ -6,8 +6,8 @@
   ></n-overlay>
   <!-- drawer -->
   <div class="n-drawer"
-  :class="classes"
-  :style="styles"
+  :class="computedClass"
+  :style="computedStyle"
   >
     <slot></slot>
   </div>
@@ -16,6 +16,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
+import { convertSizeValue } from "../../utils/utils";
 
 import Application from "../../mixins/Application";
 
@@ -26,7 +27,7 @@ export default class NDrawer extends mixins(Application) {
   @Prop({ default: false })
   value!: boolean;
 
-  @Prop({ default: 256 })
+  @Prop({ type: [String, Number], default: 256 })
   width!: number;
 
   @Prop({ default: "white" })
@@ -59,7 +60,7 @@ export default class NDrawer extends mixins(Application) {
     return this.value && this.$nApp.width <= this.$nApp.minWidth;
   }
 
-  private get classes() {
+  private get computedClass() {
     return {
       "n-drawer--show": this.value,
       "n-drawer--hide": !this.value,
@@ -68,9 +69,14 @@ export default class NDrawer extends mixins(Application) {
     };
   }
 
-  private get styles() {
-    const styles: any = {
-      width: this.width + "px",
+  private get computedStyle() {
+    const styles: {
+      width: string;
+      "background-color": string;
+      right?: string;
+      left?: string;
+    } = {
+      width: convertSizeValue(this.width),
       "background-color": this.background,
     };
 

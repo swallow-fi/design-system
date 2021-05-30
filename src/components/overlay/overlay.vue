@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="n-overlay"
   @click="onClick"
-  :style="styles">
+  :style="computedStyle">
   </div>
 </template>
 <script lang="ts">
@@ -20,11 +20,7 @@ export default class NOverlay extends Vue {
   @Prop({ default: 0.3 })
   opacity!: number;
 
-  private get classes() {
-    return {};
-  }
-
-  private get styles() {
+  private get computedStyle() {
     return {
       display: this.show === true ? "block" : "none",
       backgroundColor: this.background,

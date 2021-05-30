@@ -1,7 +1,6 @@
 <template lang="html">
   <div class="n-candlestick" 
-  style="position: relative" 
-  :style="{width: width+'px', height: height+'px', margin:'0 auto', border: border}">
+  :style="computedStyle">
     <svg width="100%" :height="height" overflow="visible">
       <!-- wick (high to low) -->
       <path
@@ -20,6 +19,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { convertSizeValue } from "../../utils/utils";
 
 @Component({
   name: "n-candlestick",
@@ -85,6 +85,16 @@ export default class NCandlestick extends Vue {
     }
 
     return this.middleColor;
+  }
+
+  private get computedStyle() {
+    return {
+      position: "relative",
+      width: convertSizeValue(this.width),
+      height: convertSizeValue(this.height),
+      margin: "0 auto",
+      border: this.border,
+    };
   }
 
   private getMaxMin(open: number, high: number, low: number) {
@@ -153,7 +163,7 @@ export default class NCandlestick extends Vue {
       (height - closeProject);
   }
 
-  created() {
+  private setCandlePath() {
     let { min, max } = this.getMaxMin(this.open, this.high, this.low);
     let highProject = this.getProject(this.height, { n: this.high, min, max });
     let lowProject = this.getProject(this.height, { n: this.low, min, max });
@@ -172,6 +182,10 @@ export default class NCandlestick extends Vue {
       closeProject,
       this.open === this.close
     );
+  }
+
+  created() {
+    this.setCandlePath();
   }
 }
 </script>

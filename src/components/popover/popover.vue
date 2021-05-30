@@ -1,7 +1,7 @@
 <template lang="html">
   <transition name="fade">
       <div class="n-popover" v-show="show"
-      :style="styles">
+      :style="computedStyle">
         <slot></slot>
       </div>
   </transition>
@@ -57,7 +57,7 @@ export default class NPopover extends Vue {
     return this.height + "px";
   }
 
-  private get styles() {
+  private get computedStyle() {
     return {
       position: "absolute",
       top: this.computedTop,

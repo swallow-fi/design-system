@@ -1,6 +1,6 @@
 <template lang="html">
   <li class="n-list-item" 
-  :class="classes"
+  :class="computedClass"
   @click="onClickHandler">
     <slot></slot>
   </li>
@@ -18,7 +18,7 @@ export default class NListItem extends Vue {
   @Prop({ default: false })
   sub!: boolean;
 
-  private get classes() {
+  private get computedClass() {
     return {
       "n-list-item--main": this.main,
       "n-list-item--sub": this.sub,

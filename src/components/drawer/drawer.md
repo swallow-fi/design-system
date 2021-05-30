@@ -2,7 +2,7 @@
 
 메뉴 판
 
-### Basic usage
+### 기본 사용
 
 ```html
 <n-button @click="toggleDefault">Toggle</n-button>

@@ -1,18 +1,18 @@
 <template lang="html">
   <div class="n-dropdown" ref="dropdown">
     <slot name="target" :on="on"></slot>
-    <div class="list" :class="{'list--right': listPosition === 'right', 'list--left': listPosition === 'left'}" ref="list" v-show="show" :style="{width: listWidth + 'px'}">
+    <div class="list" ref="list" v-show="show"
+    :class="computedClass" 
+    :style="computedStyle" 
+    >
       <slot name="list"></slot>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
-
-enum Positioin {
-  "left" = "left",
-  "right" = "right",
-}
+import { Vue, Component, Prop } from "vue-property-decorator";
+import { events, positions } from "../../utils/consts";
+import { convertSizeValue } from "../../utils/utils";
 
 @Component({
   name: "n-dropdown",
@@ -21,11 +21,23 @@ export default class NDropdown extends Vue {
   @Prop({ default: false })
   value!: boolean;
 
-  @Prop({ default: 300 })
+  @Prop({ type: [String, Number], default: 300 })
   listWidth!: number;
 
   private show: boolean = this.value;
-  private listPosition: string = Positioin.right;
+  private listPosition: string = positions.right;
+
+  private get computedClass() {
+    return {
+      ["list--" + this.listPosition]: true,
+    };
+  }
+
+  private get computedStyle() {
+    return {
+      width: convertSizeValue(this.listWidth),
+    };
+  }
 
   public on() {
     this.show = !this.show;
@@ -47,7 +59,7 @@ export default class NDropdown extends Vue {
     }
   }
 
-  // 오른쪽 기준으로만..
+  // 오른쪽 기준으로만 구현
   private updateListPosition() {
     if (this.show === false) {
       return;
@@ -61,26 +73,26 @@ export default class NDropdown extends Vue {
     let listRightSideX = dropdownRect.x + this.listWidth;
 
     if (listRightSideX > bodyWidth) {
-      this.listPosition = Positioin.left;
+      this.listPosition = positions.left;
     } else {
-      this.listPosition = Positioin.right;
+      this.listPosition = positions.right;
     }
   }
 
   private bindClickOutSide() {
-    window.addEventListener("click", this.clickOutSide);
+    window.addEventListener(events.click, this.clickOutSide);
   }
 
   private bindResize() {
-    window.addEventListener("resize", this.updateListPosition);
+    window.addEventListener(events.resize, this.updateListPosition);
   }
 
   private unbindResize() {
-    window.removeEventListener("resize", this.updateListPosition);
+    window.removeEventListener(events.resize, this.updateListPosition);
   }
 
   private unbindClickOutSide() {
-    window.removeEventListener("click", this.clickOutSide);
+    window.removeEventListener(events.click, this.clickOutSide);
   }
 
   mounted() {

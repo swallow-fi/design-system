@@ -10,8 +10,8 @@ const countUp = () => {
             const value: number = binding.value.value;
             const suffix: string = binding.value.suffix || '';
 
-            let splittedValue = `${value}`.split('.');
-            let decimalPlaces = splittedValue.length > 1 ? splittedValue[1].length : 0
+            const splittedValue = `${value}`.split('.');
+            const decimalPlaces = splittedValue.length > 1 ? splittedValue[1].length : 0
 
             let countUp: any = new CountUp.CountUp(el, value, {
                 decimalPlaces,
@@ -30,8 +30,8 @@ const countUp = () => {
 
             let countUp = (el as any)._countUp
 
-            let splittedValue = `${value}`.split('.');
-            let decimalPlaces = splittedValue.length > 1 ? splittedValue[1].length : 0
+            const splittedValue = `${value}`.split('.');
+            const decimalPlaces = splittedValue.length > 1 ? splittedValue[1].length : 0
 
             if (countUp.options.decimalPlaces !== decimalPlaces) {
                 let countUp: any = new CountUp.CountUp(el, value, {

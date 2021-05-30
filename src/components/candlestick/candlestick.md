@@ -1,6 +1,6 @@
 # Candlestick
 
-### 기본
+### 기본 사용
 
 ```html
 <n-candlestick :width="50" :height="100"

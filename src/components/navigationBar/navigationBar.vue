@@ -1,7 +1,7 @@
 <template lang="html">
   <nav class="n-navigation-bar"
-  :class="classes"
-  :style="styles">
+  :class="computedClass"
+  :style="computedStyle">
     <div class="n-navigation-bar__content"
     :style="{
       height: height + 'px'
@@ -13,7 +13,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
-
+import { convertSizeValue } from "../../utils/utils";
 import Application from "../../mixins/Application";
 import Theme from "../../mixins/Theme";
 
@@ -24,7 +24,7 @@ export default class NNavigationBar extends mixins(Application, Theme) {
   @Prop({ default: "" })
   background!: string;
 
-  @Prop({ default: 56 })
+  @Prop({ type: [String, Number], default: 56 })
   height!: number;
 
   @Prop({ default: false })
@@ -33,17 +33,17 @@ export default class NNavigationBar extends mixins(Application, Theme) {
   @Prop({ default: false })
   app!: boolean;
 
-  private get classes() {
+  private get computedClass() {
     return {
       "n-navigation-bar--fixed": this.fixed,
       "n-theme--dark": this.isDarkTheme,
     };
   }
 
-  private get styles() {
+  private get computedStyle() {
     const styles: { [key: string]: string } = {
       "background-color": this.background === "" ? "" : this.background,
-      height: this.height + "px",
+      height: convertSizeValue(this.height),
     };
 
     if (this.app === true) {

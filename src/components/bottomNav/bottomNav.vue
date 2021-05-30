@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="n-bottom-nav" :style="{height: height + 'px', background: background, position: position, 'bottom': bottom, 'justify-content': justifyContent}">
+  <div class="n-bottom-nav" :style="computedStyle">
     <n-button v-for="(item, $index) in items" @click="onClick($index)" :key="$index" :height="'100%'"
     :class="{selected: currentIndex === $index}"
     >
@@ -13,6 +13,7 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { mixins } from "vue-class-component";
 import Theme from "../../mixins/Theme";
+import { convertSizeValue } from "../../utils/utils";
 
 @Component({
   name: "n-bottom-nav",
@@ -24,8 +25,8 @@ export default class NBottomNav extends mixins(Theme) {
   @Prop({ default: "white" })
   background!: string;
 
-  @Prop({ default: 60 })
-  height!: number;
+  @Prop({ type: [String, Number], default: 60 })
+  height!: string | number;
 
   @Prop({ default: "center" })
   justifyContent!: string;
@@ -52,6 +53,16 @@ export default class NBottomNav extends mixins(Theme) {
 
   private get bottom() {
     return "0px";
+  }
+
+  private get computedStyle() {
+    return {
+      height: convertSizeValue(this.height),
+      background: this.background,
+      position: this.position,
+      bottom: this.bottom,
+      "justify-content": this.justifyContent,
+    };
   }
 
   private setCurrentIndex(route: string) {

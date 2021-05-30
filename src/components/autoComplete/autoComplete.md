@@ -22,15 +22,15 @@ data: function () {
 },
 computed: {
     filterdItems: function () {
-        const text: any = this.text;
+        const text: string = this.text;
 
-        return (this as any).$data.items.filter((item: string) => {
+        return this.$data.items.filter((item: string) => {
             return item.indexOf(text) > -1;
         });
     }
 },
 methods: {
-    changeText: function (text: any) {
+    changeText: function (text: string) {
         this.$data.text = text;
     }
 }
