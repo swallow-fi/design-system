@@ -24,7 +24,11 @@ import chart from '../src/components/chart/chart.md';
 import progressBar from '../src/components/progressBar/progressBar.md';
 import tabs from '../src/components/tabs/tabs.md';
 
-export default {
+import countUp from '../src/directives/countUp/countUp.md';
+import dateFormatter from '../src/directives/dateFormatter/dateFormatter.md';
+import numberFormatter from '../src/directives/numberFormatter/numberFormatter.md';
+
+let components = {
     button,
     divider,
     navigationBar,
@@ -51,3 +55,14 @@ export default {
     chart,
     progressBar
 };
+
+let directives = {
+    countUp,
+    dateFormatter,
+    numberFormatter
+}
+
+export {
+    components,
+    directives
+}

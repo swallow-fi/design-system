@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { VNodeDirective } from 'vue/types/vnode';
-import DateFormatter from '../utils/DateFormatter';
+import DateFormatter from '../../utils/DateFormatter';
 
 const dateFormatter = () => {
     Vue.directive('date-formatter', (el: HTMLElement, binding: VNodeDirective) => {

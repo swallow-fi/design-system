@@ -61,6 +61,7 @@ export default class Table extends Vue {
         let headers = this.headers;
         let items: any[] = this.items;
 
+        // TODO: 정리 필요
         let tableItems: any[] = [];
         for (let i = 0; i < items.length; i++) {
             let item = items[i];

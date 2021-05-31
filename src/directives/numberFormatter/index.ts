@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { VNodeDirective } from 'vue/types/vnode';
-import NumberFormatter from '../utils/NumberFormatter';
+import NumberFormatter from '../../utils/NumberFormatter';
 
 const numberFormatter = () => {
     Vue.directive('number-formatter', (el: HTMLElement, binding: VNodeDirective) => {

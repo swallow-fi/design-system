@@ -1,7 +1,8 @@
 import { RouteConfig } from "vue-router";
 import HomePage from '../pages/home/home.vue';
 import ComponentPage from '../pages/component/component.vue';
-import markdownLoader from '../markdownLoader';
+import DirectivePage from '../pages/directive/directive.vue';
+import { components, directives } from '../markdownLoader';
 import { unescapeHTML } from "../util/utils";
 
 const routes: RouteConfig[] = [
@@ -12,6 +13,48 @@ const routes: RouteConfig[] = [
         meta: {
             title: 'Nest'
         }
+    }, {
+        name: 'directives',
+        path: '/directives',
+        component: DirectivePage,
+        meta: {
+            title: 'Directives',
+        },
+        children: [
+            {
+                name: 'numberFormatter',
+                path: 'numberFormatter',
+                component: {
+                    template: `
+                    <section class="n-page">
+                    ${directives.numberFormatter}
+                    </section>
+                    `
+                }
+            },
+            {
+                name: 'dateFormatter',
+                path: 'dateFormatter',
+                component: {
+                    template: `
+                    <section class="n-page">
+                    ${directives.dateFormatter}
+                    </section>
+                    `
+                }
+            },
+            {
+                name: 'countUp',
+                path: 'countUp',
+                component: {
+                    template: `
+                    <section class="n-page">
+                    ${directives.countUp}
+                    </section>
+                    `
+                }
+            },
+        ]
     }, {
         name: 'components',
         path: '/components',
@@ -26,7 +69,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.button}
+                    ${components.button}
                     </section>
                     `
                 }
@@ -37,7 +80,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.icon}
+                    ${components.icon}
                     </section>
                     `
                 }
@@ -48,7 +91,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.chip}
+                    ${components.chip}
                     </section>
                     `
                 }
@@ -59,7 +102,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.img}
+                    ${components.img}
                     </section>
                     `
                 }
@@ -70,7 +113,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.divider}
+                    ${components.divider}
                     </section>
                     `
                 }
@@ -81,7 +124,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.layout}
+                    ${components.layout}
                     </section>
                     `
                 }
@@ -92,7 +135,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.sparkline}
+                    ${components.sparkline}
                     </section>
                     `
                 }
@@ -103,7 +146,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.candlestick}
+                    ${components.candlestick}
                     </section>
                     `
                 }
@@ -114,7 +157,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.navigationBar}
+                    ${components.navigationBar}
                     </section>
                     `
                 }
@@ -125,7 +168,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.progressBar}
+                    ${components.progressBar}
                     </section>
                     `
                 }
@@ -136,7 +179,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.bottomNav}
+                    ${components.bottomNav}
                     </section>
                     `
                 }
@@ -147,7 +190,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.chart}
+                    ${components.chart}
                     </section>
                     `,
                     mounted: function () {
@@ -310,7 +353,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.dropdown}
+                    ${components.dropdown}
                     </section>
                     `
                 }
@@ -321,7 +364,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.list}
+                    ${components.list}
                     </section>
                     `
                 }
@@ -332,7 +375,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.table}
+                    ${components.table}
                     </section>
                     `,
                     mounted: function () {
@@ -497,7 +540,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.rangeSlider}
+                    ${components.rangeSlider}
                     </section>
                     `
                 }
@@ -508,7 +551,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.text}
+                    ${components.text}
                     </section>
                     `,
                     data: function () {
@@ -539,7 +582,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.drawer}
+                    ${components.drawer}
                     </section>
                     `,
                     data: function () {
@@ -565,7 +608,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.toast}
+                    ${components.toast}
                     </section>
                     `,
                     data: function () {
@@ -586,7 +629,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.input}
+                    ${components.input}
                     </section>
                     `,
                     data: function () {
@@ -604,7 +647,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.dialog}
+                    ${components.dialog}
                     </section>
                     `,
                     data: function () {
@@ -633,7 +676,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.bottomSheet}
+                    ${components.bottomSheet}
                     </section>
                     `,
                     data: function () {
@@ -654,7 +697,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.carousel}
+                    ${components.carousel}
                     </section>
                     `,
                     data: function () {
@@ -675,7 +718,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.tabs}
+                    ${components.tabs}
                     </section>
                     `,
                     data: function () {
@@ -742,7 +785,7 @@ const routes: RouteConfig[] = [
                 component: {
                     template: `
                     <section class="n-page">
-                    ${markdownLoader.autoComplete}
+                    ${components.autoComplete}
                     </section>
                     `,
                     data: function () {
@@ -775,16 +818,16 @@ const routes: RouteConfig[] = [
 type ChildComponent = {
     template: string;
 }
-let componentsRouteChildren: RouteConfig[] = [];
+let childrenRoute: RouteConfig[] = [];
 
 for (const route of routes) {
-    if (route.name === 'components' && route.children !== undefined) {
-        componentsRouteChildren = route.children;
+    if ((route.name === 'components' || route.name === 'directives') && route.children !== undefined) {
+        childrenRoute = childrenRoute.concat(route.children);
     }
 }
 
 let childMap = new Map();
-for (let child of componentsRouteChildren) {
+for (let child of childrenRoute) {
     const container = document.createElement('div');
     let component = child.component as ChildComponent;
     container.innerHTML = component.template;
@@ -797,7 +840,7 @@ for (let child of componentsRouteChildren) {
     childMap.set(child.name, html)
 }
 
-for (let child of componentsRouteChildren) {
+for (let child of childrenRoute) {
     let component = child.component as ChildComponent;
     component.template = childMap.get(child.name);
 }
